@@ -33,7 +33,7 @@ public class BoundaryAcheterProduit {
 			numMarchant = Clavier
 					.entrerEntier("chez quel marchant voulez vous acheter des" + produit + "?\n" + marchant);
 			nbProduit = Clavier.entrerEntier("Bonjour" + nomAcheteur + "combien de " + produit + "voulez vous?\n");
-			System.out.println(controlAcheterProduit.acheterProduit(produit, numMarchant, nbProduit, nomAcheteur));
+			System.out.println(controlAcheterProduit.acheterProduit(produit,nbProduit, nomAcheteur));
 		}
 	}
 

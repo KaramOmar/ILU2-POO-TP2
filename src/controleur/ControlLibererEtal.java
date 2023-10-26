@@ -5,14 +5,14 @@ import villagegaulois.Etal;
 public class ControlLibererEtal {
 	private ControlTrouverEtalVendeur controlTrouverEtalVendeur;
 
-	public ControlLibererEtal(ControlTrouverEtalVendeur controlTrouverEtalVendeur) {
+	public ControlLibererEtal(
+			ControlTrouverEtalVendeur controlTrouverEtalVendeur) {
 		this.controlTrouverEtalVendeur = controlTrouverEtalVendeur;
 	}
-
-	public boolean isVendeur(String nomVendeur) {
-		return controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur) != null;
+	
+	public boolean isVendeur(String nomVendeur){
+		return controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur)!=null;
 	}
-
 	/**
 	 * 
 	 * @param produit
@@ -21,11 +21,30 @@ public class ControlLibererEtal {
 	 *         vendu [3] : quantité de produit à vendre au début du marché [4] :
 	 *         quantité de produit vendu
 	 */
+	
+	/*public String[] libererEtal(String nomVendeur) {
+	    Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+	    if (etal != null) {
+	        String[] donneesEtal = etal.etatEtal();
+	        etal.libererEtal();
+	        return donneesEtal;
+	    } else {
+	        
+	        return new String[]{"false", nomVendeur, "", "", ""};
+	    }
+	}
+*/
+	
 	public String[] libererEtal(String nomVendeur) {
-		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-		String[] donneesEtal = etal.etatEtal();
-		etal.libererEtal();
-		return donneesEtal;
+	    Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+	    if (etal != null) {
+	        String[] donneesEtal = etal.etatEtal();
+	        etal.libererEtal();
+	        return donneesEtal;
+	    } else {
+	        System.out.println("Les ventes de " + nomVendeur + " : null");
+	        return null;
+	    }
 	}
 
 }

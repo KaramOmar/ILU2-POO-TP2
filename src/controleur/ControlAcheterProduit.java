@@ -42,7 +42,7 @@ public class ControlAcheterProduit {
 		return chaine.toString();
 	}
 
-	public String acheterProduit(String produit, int numero, int quantite, String nomAcheteur) {
+	/*public String acheterProduit(String produit, int numero, int quantite, String nomAcheteur) {
 		StringBuilder chaine = new StringBuilder();
 		Gaulois[] gauloisProduit;
 		Gaulois gaulois;
@@ -66,4 +66,45 @@ public class ControlAcheterProduit {
 		}
 		return chaine.toString();
 	}
+	*/
+	
+	public String acheterProduit(String produit, int quantite, String nomAcheteur) {
+	    StringBuilder chaine = new StringBuilder();
+	    Gaulois[] gauloisProduit = vendeurPro(produit);
+
+	    if (gauloisProduit == null || gauloisProduit.length == 0) {
+	        chaine.append("Aucun vendeur disponible pour le produit " + produit + "\n");
+	    } else {
+	        Gaulois gaulois = gauloisProduit[0]; // On prend le premier vendeur (s'il y en a plusieurs).
+	        Etal etal = village.rechercherEtal(gaulois);
+	        int resultat = etal.acheterProduit(quantite);
+
+	        if (resultat == 0) {
+	            chaine.append(
+	                    nomAcheteur + " veut acheter " + quantite + " " + produit + " malheureusement il n y en a plus\n");
+	        } else if (resultat < quantite) {
+	            chaine.append(nomAcheteur + " veut acheter " + quantite + " " + produit
+	                    + " malheureusement il n y en a pas suffisamment\n" + nomAcheteur + " a acheter les " + resultat
+	                    + " derniers.\n");
+	        } else {
+	            chaine.append(nomAcheteur + " a acheté " + resultat + " " + produit + " à " + gaulois.getNom() + ".\n");
+	        }
+	    }
+
+	    return chaine.toString();
+	}
+
+	
+	
+	public int acheterProduit(String string, int i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+	
+
+	
+	
 }
