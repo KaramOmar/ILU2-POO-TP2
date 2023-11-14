@@ -22,9 +22,9 @@ public class ControlPrendreEtal {
             Gaulois vendeur = village.trouverHabitant(nomVendeur);
             numeroEtal = village.installerVendeur(vendeur, produit, nbProduit);
 
-            // Ajout d'une vérification pour éviter le -1
+            
             if (numeroEtal != -1) {
-                numeroEtal++; // Incrémente l'indice de l'étal
+                numeroEtal++; 
             }
         }
         return numeroEtal;
